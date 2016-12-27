@@ -67,6 +67,15 @@ checkArgs <- function(state, outcome, states, outcomes) {
     return(msg)
 } 
 
-  
+# -----------------------------------------------------------------------------
+# test data
+result1 <- best("TX", "heart attack")
+result2 <- best("TX", "heart failure")
+result3 <- best("MD", "heart attack")
+result4 <- best("MD", "pneumonia")
+result5 <- best("PR", "heart failure")   # one of the Commonwealth Territories
+result5 <- best("BB", "heart attack") # throws error message via stop function
+# last line does not work because of error of previous function call
+# call the function call below separetely
+result6 <- best("NY", "hert attack")  # throws error message via stop function
 
-result1 <- RankHospital("TX", "heart attack")

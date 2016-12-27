@@ -3,6 +3,8 @@
 setwd(file.path("~/Documents/Peter_Data/Arbeiten-Werkzeuge/Programmieren/R",
       "/Coursera/rprog_data_ProgAssignment3-data", fsep = .Platform$file.sep))
 library(readr) # using the newer readr packages by Hadley Wickham
+
+# Use the better read_csv (readr-package) instead the standard read.csv
 outcome <- read_csv("outcome-of-care-measures.csv", 
                      col_types = cols(.default = "c"))
 # Do file inspecting (note: just one command suficient)
