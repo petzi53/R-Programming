@@ -49,13 +49,15 @@ RankHospital <- function(state, outcome, num = "best") {
     result <- select(result, hospital, state, matches(outcome))
     result <- na.omit(result)
     result <- result[ order(result[[2]], result[[3]], result[[1]]), ]
-    result.df <- mutate(result, Rank = 0L)
-    result.split <- split(result.df, result$state)
+    result.split <- split(result, result$state)
+    # result.df <- as.data.frame(result.split)
     hospital.names <- sapply(result.split, function(data) data$hospital)
     us.states <- names(hospital.names)
-    print(result.split[state])
-    print(class(result.split[state]))
-    return(result.split[state])
+    # df <- as.data.frame((hospital = hospital.names, states = us.states))
+    # result.rank <- sapply(result.df, function(data) )
+    # print(result.split)
+    # print(hospital.names[[state]][[num]])
+    return(hospital.names[[state]][[num]])
 }
     
 checkArgs <- function(state, outcome, states, outcomes) {
@@ -77,7 +79,7 @@ checkArgs <- function(state, outcome, states, outcomes) {
 
 # -----------------------------------------------------------------------------
 # test data
-result1 <- RankHospital("TX", "heart attack")
+result <- RankHospital("MD", "heart failure", 4)
 # result2 <- RankHospital("TX", "heart failure")
 # result3 <- RankHospital("MD", "heart attack")
 # result4 <- RankHospital("MD", "pneumonia")
