@@ -53,11 +53,33 @@ RankHospital <- function(state, outcome, num = "best") {
     # result.df <- as.data.frame(result.split)
     hospital.names <- sapply(result.split, function(data) data$hospital)
     us.states <- names(hospital.names)
-    # df <- as.data.frame((hospital = hospital.names, states = us.states))
-    # result.rank <- sapply(result.df, function(data) )
-    # print(result.split)
-    # print(hospital.names[[state]][[num]])
+
+    # check parameter num
+    #
+    # number of hospitals by state and mortatility = max number allowed
+    # not a perfect solution for indices outside of range
+    # returning NA automatically by system would be better
+    # but then I have to find a soltion without indexing
+    max <- length(hospital.names[[state]])
+    num <- checkNum(num, max)
+    print(num)
+    if (num == -1L) return(stop("invalid ranking expression"))
+    if (num ==  0L) return("NA")
     return(hospital.names[[state]][[num]])
+}
+
+
+checkNum <- function(n.rank, n.max) {
+    nr <- n.rank
+    if (is.character(n.rank)) {
+        if (n.rank == "best")  nr <- 1L
+        else if (n.rank  == "worst")  nr <- as.integer(n.max)
+        else  nr <- -1L # invalid expression
+    } else {
+        if (n.rank > n.max)  nr <- 0L
+    }
+    
+    return(nr <- n.rank)
 }
     
 checkArgs <- function(state, outcome, states, outcomes) {
@@ -79,13 +101,11 @@ checkArgs <- function(state, outcome, states, outcomes) {
 
 # -----------------------------------------------------------------------------
 # test data
-result <- RankHospital("MD", "heart failure", 4)
-# result2 <- RankHospital("TX", "heart failure")
-# result3 <- RankHospital("MD", "heart attack")
-# result4 <- RankHospital("MD", "pneumonia")
-# result5 <- RankHospital("PR", "heart failure")   # Commonwealth Territory
-# result5 <- RankHospital("BB", "heart attack") # error message via stop function
-# last line does not work because of error of previous function call
-# call the function call below separetely
+# result1 <- RankHospital("TX", "heart failure", 4)
+# result2 <- RankHospital("MD", "heart attack", "xxxxxx")
+# result3 <- RankHospital("MN", "heart attack", 5000)
+# result4 <- RankHospital("BB", "heart attack") # error message via stop function
+# result5 <- RankHospital("TX", "heart attack", "second")
+# #last line does not work because of error of previous function call
+# #call the function call below separetely
 # result6 <- RankHospital("NY", "hert attack")  # error message via stop function
-
