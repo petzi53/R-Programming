@@ -14,7 +14,7 @@ best <- function(state, outcome) {
         if (!is.null(my_msg)) {
         return(stop(my_msg))
         }
-    f <- read_csv("outcome-of-care-measures.csv", 
+    f <- read_csv("ProgAssignment3-data/outcome-of-care-measures.csv", 
                   # n_max = 10, # for test purposes
                   na = "Not Available",
                   col_types = cols_only(
@@ -28,7 +28,7 @@ best <- function(state, outcome) {
                         = col_double()))
     names(f) <- c("hospital", "state", 
                   "heart attack", "heart failure", "pneumonia")
-    f <- select (f, hospital, state, matches(outcome))
+    f <- select(f, hospital, state, matches(outcome))
     f <- na.omit(f)
     f <- f[ order(f[[2]], f[[3]], f[[1]]), ]
     f <- split(f, f$state == state)
@@ -61,13 +61,14 @@ checkArgs <- function(myState, myOutcome) {
 
 # -----------------------------------------------------------------------------
 # test data
-result1 <- best("TX", "heart attack")
-result2 <- best("TX", "heart failure")
-result3 <- best("MD", "heart attack")
-result4 <- best("MD", "pneumonia")
-result5 <- best("PR", "heart failure")   # one of the Commonwealth Territories
-result5 <- best("BB", "heart attack") # throws error message via stop function
-# last line does not work because of error of previous function call
+# result1 <- best("TX", "heart attack")
+# result2 <- best("TX", "heart failure")
+# result3 <- best("MD", "heart attack")
+# result4 <- best("MD", "pneumonia")
+# result5 <- best("PR", "heart failure")   # one of the Commonwealth Territories
+# result5 <- best("BB", "heart attack") # throws error message via stop function
+
+# line below does not work because of stop from previous function call
 # call the function call below separetely
 result6 <- best("NY", "hert attack")  # throws error message via stop function
 
