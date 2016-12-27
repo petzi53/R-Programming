@@ -70,7 +70,7 @@ checkArgs <- function(myState, myOutcome) {
 
 # line below does not work because of stop from previous function call
 # call the function call below separetely
-result6 <- best("NY", "hert attack")  # throws error message via stop function
+# result6 <- best("NY", "hert attack")  # throws error message via stop function
 
 
 
