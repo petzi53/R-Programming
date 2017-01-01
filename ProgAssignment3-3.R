@@ -104,7 +104,7 @@ checkArgs <- function(my.state, my.outcome, my.states, my.outcomes) {
 # result2 <- RankHospital("TX", "heart attack", "best")
 # result3 <- RankHospital("MD", "heart attack", "worst")
 # result4 <- RankHospital("MN", "heart attack", 5000)
-result5 <- RankHospital("BB", "heart attack") # error message via stop function
+# result5 <- RankHospital("BB", "heart attack") # error message via stop function
 # result6 <- RankHospital("TX", "heart attack", "second")
 # last line does not work because of error of previous function call
 # #call the function call below separetely
