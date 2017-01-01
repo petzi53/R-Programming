@@ -62,7 +62,7 @@ checkArgs <- function(myState, myOutcome) {
 
 # -----------------------------------------------------------------------------
 # test data
-result1 <- best("TX", "heart attack")
+# result1 <- best("TX", "heart attack")
 # result2 <- best("TX", "heart failure")
 # result3 <- best("MD", "heart attack")
 # result4 <- best("MD", "pneumonia")
