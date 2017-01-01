@@ -3,6 +3,7 @@
 #
 #
 # Ranking hospitals by outome and state
+Sys.setenv(LANG = "en")
 library(readr)
 library(dplyr)
 
@@ -63,7 +64,7 @@ RankHospital <- function(state, outcome, num = "best") {
     if (num == "NA") return("NA")
     if (is.character(num)) return(stop("invalid ranking expression"))
     # --------------------------
-    # Args were ok, so we can finish 
+    # Args are ok, so we can finish 
     return(hospital.names[[state]][[num]])
 }
 
@@ -103,8 +104,8 @@ checkArgs <- function(my.state, my.outcome, my.states, my.outcomes) {
 # result2 <- RankHospital("TX", "heart attack", "best")
 # result3 <- RankHospital("MD", "heart attack", "worst")
 # result4 <- RankHospital("MN", "heart attack", 5000)
-# result5 <- RankHospital("BB", "heart attack") # error message via stop function
-result6 <- RankHospital("TX", "heart attack", "second")
+result5 <- RankHospital("BB", "heart attack") # error message via stop function
+# result6 <- RankHospital("TX", "heart attack", "second")
 # last line does not work because of error of previous function call
 # #call the function call below separetely
 # result7 <- RankHospital("NY", "hert attack")  # error message via stop function
