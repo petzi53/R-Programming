@@ -76,4 +76,4 @@ checkNum <- function(n.rank, n.max) {
 # t <- tail(RankAll("pneumonia", "worst"), 3)
 # t <- tail(RankAll("heart failure"), 10)
 # t <- tail(RankAll("hert failure", 10), 5)
-t <- head(RankAll("heart failure", 5000), 10)
+# t <- head(RankAll("heart failure", 5000), 10) # no error message??
